@@ -1,10 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage("build") {
+    stage("run frontend") {
       steps {
-        npm install
-        npm run build
+        echo 'executing yarn...'
+        nodejs('NodeJS') {
+          sh 'yarn install'
+        }
+      }
+    }
+    stage("run backend") {
+      steps {
+        echo 'exectuing gradle...'
+        withGradle() {
+          sh './gradlew -v'
+        }
       }
     }
   }
