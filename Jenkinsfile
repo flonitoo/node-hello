@@ -12,6 +12,7 @@ pipeline {
     stage("run backend") {
       steps {
         echo 'exectuing gradle...'
+        echo 'Hello'
       }
     }
   }
